@@ -1,0 +1,1 @@
+[{"first_name": "Oleh", "last_name": "Komenchuk", "tel_number": "0637035723", "region": "Vinnytsia", "city": "Vinnytsia"}]
