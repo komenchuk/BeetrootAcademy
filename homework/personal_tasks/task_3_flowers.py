@@ -1,97 +1,88 @@
-class FLowers:
-    all_flowers = 0
+class Flower:
+    __curent_id = 0
 
-    def __init__(self, name: str, price: float, color: str, volume: str):
+    def __init__(self, name: str, price: float, quantity: int):
+        Flower.__curent_id += 1
+        self.id = Flower.__curent_id
         self.name = name
         self.price = price
-        self.color = color
-        self.volume = volume
+        self.quantity = quantity
+
+    """def motive(self, quantity: int):
+        self.quantity = lambda x: not x % 2, quantity"""
+
+    def add_quantity(self, quantity: int):
+        self.quantity += quantity
+
+    def remove_quantity(self, quantity: int):
+        self.quantity = max(0, self.quantity - quantity)
+
+    def __str__(self):
+        return f'ID: {self.id}\tFlowers: {self.name}\tPrice: {self.price}\tQuantity: {self.quantity}'
+
+
+class Store:
+
+    def __init__(self):
         self.flowers = []
 
-    def __repr__(self):
-        return f'Flowers ('
-        {self.price}, {self.color}, {self.volume}
-        ').'
+    def add_flower(self, flower):
+        self.flowers.append(flower)
+
+    def add_flowers(self, flowers):
+        self.flowers.extend(flowers)
+
+    def remove_flower(self, flower_id):
+        for flower in self.flowers:
+            if flower.id == flower_id:
+                self.flowers.remove(flower)
+                break
+
+    def print_assortment(self):
+        for flower in self.flowers:
+            print (flower)
+
+    def get_total_value(self):
+        sum = 0
+        for flower in self.flowers:
+            sum += flower.quantity * flower.price
+        return sum
+
+    """def get_motive(self):
+        rip = 0
+        happy = 0
+        
+        for flower in self.flowers:
+            if flower.quantity % 2 != 0:
+                rip += 1
+                print('Соболезнуем..')
+            else:
+                happy += 1
+                print('Пусть букет радует!')
+            break"""
+
+
+"""class Motive:
+    def __init__(self, motive: str):
+        self.id = Flower.__curent_id
+        self.motive = motive
 
     def __str__(self):
-        return f'Flowers {self.name} are worth it {self.price}, they are {self.color} in {self.volume} volume.'
+        return f'ID: {self.id}\tMotive: {self.motive}'"""
 
 
-class Birthday(FLowers):
 
-    def __init__(self, name, price, color, volume, quantity):
-        super().__init__(name, price, color, volume)
-        self.quantity = quantity
-        self.birthday_flowers = []
+f1 = Flower('Троянда', 30, 9)
+f2 = Flower('Гвоздика', 15, 2)
+f3 = Flower('Ромашка', 20, 21)
 
-    def new_bouquet(self, name, price, color, volume, quantity):
-        self.birthday_flowers.append(FLowers(name, price, color, volume, quantity))
+s = Store()
 
-    def __repr__(self):
-        return f'Birthday bouquet('
-        {self.name}
-        ').'
-
-    def __str__(self):
-        list_of_flowers = '\n'.join(map(lambda x: f'{x.name}, {x.price}, {x.color}, {x.volume}, {x.quantity}'))
-        return list_of_flowers
+s.add_flower(f1)
+s.add_flower(f2)
+s.add_flower(f3)
 
 
-class Kosyak(FLowers):
+s.print_assortment()
 
-    def __init__(self, name, price, color, volume, quantity):
-        super().__init__(name, price, color, volume)
-        self.quantity = quantity
-        self.kosyak_flowers = []
-
-    def new_bouquet(self, name, price, color, volume, quantity):
-        self.kosyak_flowers.append(FLowers(name, price, color, volume, quantity))
-
-    def __repr__(self):
-        return f'Kosyak bouquet('
-        {self.name}
-        ').'
-
-    def __str__(self):
-        list_of_flowers = '\n'.join(map(lambda x: f'{x.name}, {x.price}, {x.color}, {x.volume}, {x.quantity}'))
-        return list_of_flowers
-
-
-class Simple(FLowers):
-
-    def __init__(self, name, price, color, volume, quantity):
-        super().__init__(name, price, color, volume)
-        self.quantity = quantity
-        self.simple_flowers = []
-
-    def new_bouquet(self, name, price, color, volume, quantity):
-        self.simple_flowers.append(FLowers(name, price, color, volume, quantity))
-
-    def __repr__(self):
-        return f'Simple bouquet('
-        {self.name}
-        ').'
-
-    def __str__(self):
-        list_of_flowers = '\n'.join(map(lambda x: f'{x.name}, {x.price}, {x.color}, {x.volume}, {x.quantity}'))
-        return list_of_flowers
-
-
-class Funeral(FLowers):
-
-    def __init__(self, name, price, color, volume, quantity):
-        super().__init__(name, price, color, volume)
-        self.quantity = quantity
-        self.funeral_flowers = []
-
-    def new_bouquet(self, name, price, color, volume, quantity):
-        self.funeral_flowers.append(FLowers(name, price, color, volume, quantity))
-
-    def __repr__(self):
-        return f'Funeral bouquet('
-        {self.name}
-        ').'
-
-    def __str__(self):
-        list_of_flowers = '\n'.join(map(lambda x: f'{x.name}, {x.price}, {x.color}, {x.volume}, {x.quantity}'))
-        return list_of_flowers
+print(s.get_total_value())
