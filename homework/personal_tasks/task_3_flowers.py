@@ -8,9 +8,6 @@ class Flower:
         self.price = price
         self.quantity = quantity
 
-    """def motive(self, quantity: int):
-        self.quantity = lambda x: not x % 2, quantity"""
-
     def add_quantity(self, quantity: int):
         self.quantity += quantity
 
@@ -60,15 +57,6 @@ class Store:
                 happy += 1
                 print('Пусть букет радует!')
             break"""
-
-
-"""class Motive:
-    def __init__(self, motive: str):
-        self.id = Flower.__curent_id
-        self.motive = motive
-
-    def __str__(self):
-        return f'ID: {self.id}\tMotive: {self.motive}'"""
 
 
 
