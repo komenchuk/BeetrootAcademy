@@ -15,9 +15,9 @@ class Person:
         self.last_name = last_name
         self.age = age
 
-    def talf(self):
+    def talk(self):
         print(f'Hello, my name is {self.first_name} {self.last_name} and I\'m {self.age} years old')
 
 
 human = Person('Oleh', 'Komenchuk', 22)
-human.talf()
+human.talk()
