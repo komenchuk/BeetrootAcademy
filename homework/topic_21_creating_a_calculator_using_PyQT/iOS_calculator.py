@@ -91,14 +91,26 @@ class PyCalcCtrl:
         expression = self._view.displayText() + sub_exp
         self._view.setDisplayText(expression)
 
+    def _changeSignClicked(self):
+        text = self._view.displayText()
+        value = float(text)
+
+        if value > 0.0:
+            text = '-' + text
+        elif value < 0.0:
+            text = text[1:]
+
+        self.display.setText(text)
+
     def _connectSignals(self):
         for btnText, btn in self._view.buttons.items():
-            if btnText not in {'=', 'C'}:
+            if btnText not in {'=', 'C', '+/-'}:
                 btn.clicked.connect(partial(self._buildExpression, btnText))
 
         self._view.buttons['='].clicked.connect(self._calculateResult)
         self._view.display.returnPressed.connect(self._calculateResult)
         self._view.buttons['C'].clicked.connect(self._view.clearDisplay)
+        self._view.buttons['+/-'].clicked.connect(self._changeSignClicked)
 
 
 ERROR_MSG = 'ERROR'
