@@ -1,0 +1,3 @@
+import homework.topic_18_modules_and_standard_library.task_1
+
+homework.topic_18_modules_and_standard_library.task_1.main()
