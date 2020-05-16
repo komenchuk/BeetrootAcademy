@@ -1,7 +1,7 @@
-import random
+from random import sample
 
-a = random.sample(range(10), 5)
-b = random.sample(range(10), 5)
+a = sample(range(10), 5)
+b = sample(range(10), 5)
 c = []
 
 for i in a:

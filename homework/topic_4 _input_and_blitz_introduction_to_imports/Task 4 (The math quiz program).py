@@ -1,11 +1,10 @@
-import random
+from random import randint
 
-a = random.randint(1, 100)
-b = random.randint(1, 100)
+a = randint(1, 100)
+b = randint(1, 100)
 Answer = a + b
 
-print(f'{a} + {b} = ')
-UserAnswer = int(input(' '))
+UserAnswer = int(input(f'{a} + {b} = '))
 if UserAnswer == Answer:
     print('True')
 else:
