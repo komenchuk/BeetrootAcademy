@@ -1,8 +1,13 @@
-# Есть разные способы реализовать быструю сортировки
-# мы выбрали схема Tony Hoare
+"""
+One way to improve the quicksort is to use an insertion sort on lists that are small in length
+(call it the “partition limit”). Why does this make sense?
+Re-implement the quicksort and use it to sort a random list of integers.
+Perform analysis using different list sizes for the partition limit.
+"""
+
+
 def partition(nums, low, high):
-    # Мы выбираем средний элемент, в качестве опорного. Некоторые реализации выбирают
-    # первый элемент или последний элемент или вообще случайный элемент.
+    # Мы выбираем средний элемент, в качестве опорного
     pivot = nums[(low + high) // 2]
     i = low - 1
     j = high + 1
@@ -18,8 +23,7 @@ def partition(nums, low, high):
         if i >= j:
             return j
 
-        # Если элемент в i (слева от оси) больше, чем
-        # элемент в J (справа от оси), то поменять их местами
+        # Если элемент в i (слева от оси) больше, чем элемент в j (справа от оси), то поменять их местами
         nums[i], nums[j] = nums[j], nums[i]
 
 
@@ -35,7 +39,7 @@ def quick_sort(nums):
     _quick_sort(nums, 0, len(nums) - 1)
 
 
-# Проверяем, что все работает
-random_list_of_nums = [22, 5, 1, 18, 99]
+# Проверка, что всё работает
+random_list_of_nums = [50, 12, 23, 5, 40, 33, 18, 1, 2, 98]
 quick_sort(random_list_of_nums)
-print(random_list_of_nums)  
+print(random_list_of_nums)
