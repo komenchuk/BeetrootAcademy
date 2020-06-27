@@ -1,9 +1,3 @@
-"""
-Напишем простой парсер новостей. В качестве источника будем использовать сайт Habr.com
-Помимо библиотеки requests нам также понадобится билиотека BeatifulSoup
-(это библиотека Python для извлечения данных из файлов HTML и XML).
-"""
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -11,10 +5,10 @@ from bs4 import BeautifulSoup
 class HabrPythonNews:
 
     def __init__(self):
-        self.url = 'https://habr.com/ru/hub/python/'
+        self.url = 'https://habr.com/ru/post/505944/'
         self.html = self.get_html()
 
-    # Метод get_html() класса DouPythonNews с помощью библиотеки Requests отправляет наш запрос GET к сайту
+    # Метод get_html() класса HabrPythonNews с помощью библиотеки Requests отправляет наш запрос GET к сайту
     # Habr.com и возвращает содержимое страницы в виде текста.
     def get_html(self):
         try:
